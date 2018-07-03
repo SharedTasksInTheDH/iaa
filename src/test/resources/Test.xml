@@ -3,7 +3,7 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>Rosen-Elf-Metaphern_Linda.h.kessler@web.de_2018-05-03T09:09:14.909</title>
+                <title>Rosen-Elf-Metaphern_Annotator1_2018-05-03T09:09:14.909</title>
                 <author>empty</author>
             </titleStmt>
             <publicationStmt>
@@ -34,7 +34,7 @@
                     <fDecl xml:id="CATMA_119F5F68-74CE-444B-9F81-904A51B85E11" name="catma_markupauthor">
                         <vRange>
                             <vColl>
-                                <string>Linda.h.kessler@web.de</string>
+                                <string>Annotator1</string>
                             </vColl>
                         </vRange>
                     </fDecl>
@@ -44,7 +44,7 @@
                     <fDecl xml:id="CATMA_2E61BDD6-42AE-4D03-B91B-FADBCF45F9C6" name="catma_markupauthor">
                         <vRange>
                             <vColl>
-                                <string>Linda.h.kessler@web.de</string>
+                                <string>Annotator1</string>
                             </vColl>
                         </vRange>
                     </fDecl>
@@ -68,7 +68,7 @@
                     <fDecl xml:id="CATMA_D3FCCFA0-D569-4FEA-B651-6B2949412587" name="catma_markupauthor">
                         <vRange>
                             <vColl>
-                                <string>Linda.h.kessler@web.de</string>
+                                <string>Annotator1</string>
                             </vColl>
                         </vRange>
                     </fDecl>
@@ -237,12 +237,12 @@
                 <string>-6298247</string>
             </f>
             <f name="catma_markupauthor">
-                <string>Linda.h.kessler@web.de</string>
+                <string>Annotator1</string>
             </f>
         </fs>
         <fs xml:id="CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66" type="CATMA_1D4C9E1A-C044-4A2F-BD2D-14CE9B491BB0">
             <f name="catma_markupauthor">
-                <string>Linda.h.kessler@web.de</string>
+                <string>Annotator1</string>
             </f>
             <f name="catma_displaycolor">
                 <string>-5750710</string>
@@ -253,12 +253,12 @@
                 <string>-4296849</string>
             </f>
             <f name="catma_markupauthor">
-                <string>Linda.h.kessler@web.de</string>
+                <string>Annotator1</string>
             </f>
         </fs>
         <fs xml:id="CATMA_2827246D-7BCB-4BEC-9F95-74C6B622F395" type="CATMA_1D4C9E1A-C044-4A2F-BD2D-14CE9B491BB0">
             <f name="catma_markupauthor">
-                <string>Linda.h.kessler@web.de</string>
+                <string>Annotator1</string>
             </f>
             <f name="catma_displaycolor">
                 <string>-5750710</string>
@@ -269,12 +269,12 @@
                 <string>-4296849</string>
             </f>
             <f name="catma_markupauthor">
-                <string>Linda.h.kessler@web.de</string>
+                <string>Annotator1</string>
             </f>
         </fs>
         <fs xml:id="CATMA_94E1BDA0-E3BB-426A-9E6F-252CC64FC236" type="CATMA_1D4C9E1A-C044-4A2F-BD2D-14CE9B491BB0">
             <f name="catma_markupauthor">
-                <string>Linda.h.kessler@web.de</string>
+                <string>Annotator1</string>
             </f>
             <f name="catma_displaycolor">
                 <string>-5750710</string>
