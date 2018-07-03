@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:lang="en" xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Rosen-Elf-Metaphern_Linda.h.kessler@web.de_2018-05-03T09:09:14.909</title>
+                <author>empty</author>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>empty</publisher>
+            </publicationStmt>
+            <sourceDesc>
+                <p>empty</p>
+                <ab>
+                    <fs xml:id="CATMA_TECH_DESC">
+                        <f name="version">
+                            <string>5</string>
+                        </f>
+                    </fs>
+                </ab>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <fsdDecl xml:id="CATMA_1E4280B1-30BF-4E81-BF94-722E4A502B1E" n="Erzahlebenen 2018-05-03T09:08:02.000+0200">
+                <fsDecl xml:id="CATMA_5592B31E-F37D-4F0D-AC9D-07C9AE38653E" n="2018-05-03T09:08:02.000+0200" type="CATMA_5592B31E-F37D-4F0D-AC9D-07C9AE38653E">
+                    <fsDescr>narrative Metalepse</fsDescr>
+                    <fDecl xml:id="CATMA_DBB2B621-56A4-4EB2-BF91-6A0D0473B6EE" name="catma_displaycolor">
+                        <vRange>
+                            <vColl>
+                                <string>-4296849</string>
+                            </vColl>
+                        </vRange>
+                    </fDecl>
+                    <fDecl xml:id="CATMA_119F5F68-74CE-444B-9F81-904A51B85E11" name="catma_markupauthor">
+                        <vRange>
+                            <vColl>
+                                <string>Linda.h.kessler@web.de</string>
+                            </vColl>
+                        </vRange>
+                    </fDecl>
+                </fsDecl>
+                <fsDecl xml:id="CATMA_1D4C9E1A-C044-4A2F-BD2D-14CE9B491BB0" n="2018-05-03T09:05:47.000+0200" type="CATMA_1D4C9E1A-C044-4A2F-BD2D-14CE9B491BB0">
+                    <fsDescr>Binnenerzahlung</fsDescr>
+                    <fDecl xml:id="CATMA_2E61BDD6-42AE-4D03-B91B-FADBCF45F9C6" name="catma_markupauthor">
+                        <vRange>
+                            <vColl>
+                                <string>Linda.h.kessler@web.de</string>
+                            </vColl>
+                        </vRange>
+                    </fDecl>
+                    <fDecl xml:id="CATMA_0407AE4F-3531-46B0-BC02-CF6445232665" name="catma_displaycolor">
+                        <vRange>
+                            <vColl>
+                                <string>-5750710</string>
+                            </vColl>
+                        </vRange>
+                    </fDecl>
+                </fsDecl>
+                <fsDecl xml:id="CATMA_9277B342-1844-4268-B42E-2EBEB0A92C7E" n="2018-05-03T09:05:40.000+0200" type="CATMA_9277B342-1844-4268-B42E-2EBEB0A92C7E">
+                    <fsDescr>Rahmenerzahlung</fsDescr>
+                    <fDecl xml:id="CATMA_DEBA6C56-06EE-40BF-8E17-22A42D146CD0" name="catma_displaycolor">
+                        <vRange>
+                            <vColl>
+                                <string>-6298247</string>
+                            </vColl>
+                        </vRange>
+                    </fDecl>
+                    <fDecl xml:id="CATMA_D3FCCFA0-D569-4FEA-B651-6B2949412587" name="catma_markupauthor">
+                        <vRange>
+                            <vColl>
+                                <string>Linda.h.kessler@web.de</string>
+                            </vColl>
+                        </vRange>
+                    </fDecl>
+                </fsDecl>
+            </fsdDecl>
+        </encodingDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <ab type="catma">Hans Christian Andersen
+                Der Rosen-Elf
+                
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Mitten in einem Garten wuchs ein Rosenstock, der war ganz voller Rosen, und in einer derselben, der </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">schönsten von allen, wohnte ein Elf; er war so winzig klein, daß kein menschliches Auge ihn erblicken </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">konnte; hinter jedem Blatte in der Rose hatte er eine Schlafkammer; er war so wohlgebildet und schön, wie</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> nur ein Kind sein konnte und hatte Flügel von den Schultern bis gerade hinunter zu den Füßen. O, welcher</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> Duft war in seinen Zimmern, und wie klar und schön waren die Wände! Es waren ja die blaßroten </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Rosenblätter.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Den ganzen Tag erfreute er sich im warmen Sonnenschein, flog von Blume zu Blume, tanzte auf den Flügeln </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">des fliegenden Schmetterlings und maß, wie viele Schritte er zu gehen hatte, um über alle Landstraßen und</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> Steige zu gelangen, welche auf einem einzigen Lindenblatte sind. Das war, was wir die Adern im Blatte </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">nennen, die er für Landstraßen und Steige nahm, ja das waren große Wege für ihn! Ehe er damit fertig </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">wurde, ging die Sonne unter, er hatte auch spät damit angefangen.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66">[400] Es wurde kalt, der Tau fiel und der Wind wehte; nun war es das beste, nach Hause zu kommen, er </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66">tummelte sich, so sehr er konnte, aber die Rose hatte sich geschlossen, er konnte nicht hineingelangen – </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66">keine einzige Rose stand geöffnet. Der arme kleine Elf erschrak sehr. Er war früher nie nachts </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66">weggewesen, hatte</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66 #CATMA_54D37776-71D2-47BF-91E8-0A95A5FE3287"> immer süß hinter den warmen Rosenblättern geschlummert.</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66"> O, das wird sicher sein Tod </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66">werden!
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Am andern Ende des Gartens, wußte er, befand sich eine Laube mit schönem Jelängerjelieber, die Blumen </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">sahen wie große, bemalte Hörner aus; in eine derselben wollte er hinabsteigen und bis morgen schlafen.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Er flog dahin. Was sah er da! Es waren zwei Menschen in der Laube, ein junger, hübscher Mann und ein </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">schönes Mädchen; sie saßen neben einander und wünschten, daß sie sich nicht zu trennen brauchten; sie </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">waren einander so gut, weit mehr noch, als das beste Kind seiner Mutter und seinem Vater sein kann.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">»Doch müssen wir uns trennen!« sagte der junge Mann. »Dein Bruder mag uns nicht leiden, deshalb sendet er</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> mich mit einem Auftrage so weit über Berge und Seen fort! Lebe wohl, meine süße Braut, denn das bist Du </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">mir doch!«
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_2827246D-7BCB-4BEC-9F95-74C6B622F395">Dann küßten sie sich, und das junge Mädchen weinte und gab ihm eine Rose. Aber bevor sie ihm dieselbe </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_2827246D-7BCB-4BEC-9F95-74C6B622F395">reichte, drückte sie einen Kuß darauf, so fest und so innig, daß die Blume sich öffnete. Da flog der </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_2827246D-7BCB-4BEC-9F95-74C6B622F395">kleine Elf in diese hinein und lehnte sein Haupt gegen die feinen, duftenden Wände; hier konnte er gut </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_2827246D-7BCB-4BEC-9F95-74C6B622F395">hören, daß Lebewohl gesagt wurde. Und er fühlte, daß die Rose ihren Platz an des jungen Mannes Brust </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_2827246D-7BCB-4BEC-9F95-74C6B622F395">erhielt. O, wie schlug doch das Herz darinnen! Der kleine Elf konnte gar nicht einschlafen, so pochte es.</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_2827246D-7BCB-4BEC-9F95-74C6B622F395">
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Doch nicht lange lag die Rose auf der Brust. Der Mann nahm sie hervor, und während er einsam in dem </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">dunkeln Walde ging, küßte er die Blume, so oft und stark, daß der kleine Elf fast erdrückt wurde; er </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">konnte durch das Blatt fühlen, wie die [401] Lippen des Mannes brannten, und die Rose selbst hatte sich, </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">wie bei der stärksten Mittagssonne, geöffnet.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Da kam ein anderer Mann, finster und böse; es war des hübschen Mädchens schlechter Bruder. Ein scharfes </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">und großes Messer zog er hervor, und während jener die Rose küßte, stach der schlechte Mann ihn tot, </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">schnitt seinen Kopf ab und begrub ihn mit dem Körper in der weichen Erde unter dem Lindenbaume.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">»Nun ist er vergessen und fort,« dachte der schlechte Bruder; »er kommt nie mehr zurück. Eine lange Reise</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> sollte er machen, über Berge und Seen, da kann man leicht das Leben verlieren, und das hat er verloren. </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Er kommt nicht mehr zurück, und mich darf meine Schwester nicht nach ihm fragen.«
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Dann scharrte er mit dem Fuße verdorrte Blätter über die lockere Erde und ging wieder in der dunkeln </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Nacht nach Hause. Aber er ging nicht allein, wie er glaubte; der kleine Elf begleitete ihn, er saß in </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">einem vertrockneten, aufgerollten Lindenblatte, welches dem bösen Manne, als er grub, in die Haare </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">gefallen war. Der Hut war nun darauf gesetzt, es war dunkel darin, und der Elf zitterte vor Schreck und </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Zorn über die schlechte That.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">In der Morgenstunde kam der böse Mann nach Hause; er nahm seinen Hut ab und ging in der Schwester </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">Schlafstube hinein. Da lag das schöne, blühende Mädchen und träumte von ihm, dem sie so gut war und von </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">dem sie nun glaubte, daß er über Berge und durch Wälder gehe; der böse Bruder neigte sich über sie und </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">lachte häßlich, wie nur ein Teufel lachen kann, da fiel das trockene Blatt aus seinem Haare auf die </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">Bettdecke nieder, aber er bemerkte es nicht und ging hinaus, um in der Morgenstunde selbst ein wenig zu </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">schlafen. Aber der Elf schlüpfte aus dem verdorrten Blatte, setzte sich an das Ohr des schlafenden </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">Mädchens und erzählte ihr, wie in einem Traum, den schrecklichen Mord, beschrieb ihr den Ort, wo der </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">Bruder ihn erschlagen [402] und seine Leiche verscharrt hatte, erzählte von dem blühenden Lindenbaume </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">dicht dabei und sagte: »Damit Du nicht glaubst, daß es nur ein Traum sei, was ich Dir erzählt habe, so </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">wirst Du auf Deinem Bette ein verdorrtes Blatt finden!« Und das fand sie, als sie erwachte.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">O, welche bittere Thränen weinte sie und durfte doch niemand ihren Schmerz anvertrauen! Das Fenster stand</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD"> den ganzen Tag offen, der kleine Elf konnte leicht zu den Rosen und all' den übrigen Blumen nach dem </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">Garten hinaus gelangen, aber er wagte es nicht, die Betrübte zu verlassen. Im Fenster stand ein Strauch </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">mit Monatsrosen, in eine der Blumen setzte er sich und betrachtete das arme Mädchen. Ihr Bruder kam oft </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">in die Kammer hinein, und war heiter trotz seiner Schlechtigkeit, aber sie durfte kein Wort über ihren </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD">Herzenskummer sagen.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Sobald es dunkel wurde, schlich sie sich aus dem Hause, ging im Walde nach der Stelle, wo der Lindenbaum </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">stand, nahm die Blätter von der Erde, grub in dieselbe hinein und fand ihn sogleich, der erschlagen </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">worden war. O, wie weinte sie, und bat den lieben Gott, daß er sie auch bald sterben lasse! –
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Gern hätte sie die Leiche mit sich nach Hause genommen, aber das konnte sie nicht, da nahm sie das </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">bleiche Haupt mit den geschlossenen Augen, küßte den kalten Mund und schüttelte die Erde aus seinem </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">schönen Haar. </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38 #CATMA_94E1BDA0-E3BB-426A-9E6F-252CC64FC236">»Das will ich behalten!« sagte sie und als sie Erde und Blätter auf den toten Körper gelegt</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> hatte, nahm sie den Kopf und einen kleinen Zweig von dem Jasminstrauch, der im Wald blühte, wo er </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">begraben war, mit sich nach Hause.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Sobald sie in ihrer Stube war, holte sie sich den größten Blumentopf, der zu finden war, in diesen legte </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">sie des Toten Kopf, schüttete Erde darauf und pflanzte dann den Jasminzweig in den Topf.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">[403] »Lebewohl! Lebewohl!« flüsterte der kleine Elf, er konnte es nicht länger ertragen, all' diesen </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Schmerz zu sehen, und flog deshalb hinaus zu seiner Rose im Garten; aber die war abgeblüht, da hingen nur</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> einige bleiche Blätter an der grünen Hagebutte.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">»Ach, wie bald ist es doch mit all' dem Schönen und Guten vorbei!« seufzte der Elf. Zuletzt fand er eine </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Rose wieder, die wurde sein Haus, hinter ihren feinen und duftenden Blättern konnte er wohnen.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Jeden Morgen flog er nach dem Fenster des armen Mädchens, und da stand sie immer bei dem Blumentopf und </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">weinte. Die bitteren Thränen fielen auf den Jasminzweig, und mit jedem Tage, wie sie bleicher und </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">bleicher und bleicher wurde, stand der Zweig frischer und grüner da, ein Schößling trieb nach dem andern </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">hervor, kleine, weiße Knospen blühten auf, und sie küßte sie, aber der böse Bruder schalt und fragte, ob </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">sie närrisch geworden sei? Er konnte es nicht begreifen, weshalb sie immer über den Blumentopf weine. Er </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">wußte ja nicht, welche Augen da geschlossen und welche roten Lippen da zu Erde geworden waren; sie neigte</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> ihr Haupt gegen den Blumentopf, und der kleine Elf von der Rose fand sie so schlummern; da setzte er </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">sich in ihr Ohr, erzählte von dem Abend in der Laube, vom Duft der Rose, und der Elfen Liebe; sie träumte</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> süß, und während sie träumte, entschwand das Leben, sie war eines stillen Todes verblichen, sie war bei </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">ihm, den sie liebte, im Himmel.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Und die Jasminblumen öffneten ihre großen, weißen Glocken, sie dufteten eigentümlich süß, anders konnten </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">sie nicht über die Tote weinen.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Aber der böse Bruder betrachtete den schön blühenden Strauch, nahm ihn als ein Erbgut zu sich, und setzte</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> ihn in seine Schlafstube, dicht beim Bette, denn er war herrlich anzuschauen und der Duft war süß und </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">lieblich. Der kleine [404] Rosenelf folgte mit, flog von Blume zu Blume, in jeder wohnte ja eine kleine </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Seele, und der erzählte er von dem ermordeten jungen Mann, dessen Haupt nun Erde unter der Erde war, </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">erzählte von dem bösen Bruder und der armen Schwester.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">»Wir wissen es,« sagte eine jede Seele in den Blumen, »wir wissen es! Sind wir nicht aus des Erschlagenen</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> Augen und Lippen entsprossen? Wir wissen es; wir wissen es!« Und dann nickten sie sonderbar mit dem </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Kopfe.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Der Rosenelf konnte es gar nicht begreifen, wie sie so ruhig sein konnten, und flog hinaus zu den Bienen,</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> die Honig sammelten, erzählte ihnen die Geschichte von dem bösen Bruder, und die Bienen sagten es ihrer </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Königin, welche befahl, daß sie alle am nächsten Morgen den Mörder umbringen sollten.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Aber in der Nacht vorher, es war die erste Nacht, welche auf den Tod der Schwester folgte, als der Bruder</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38"> in seinem Bette dicht neben dem duftenden Jasminstrauch schlief, öffnete sich ein jeder Blumenkelch, </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">unsichtbar, aber mit giftigen Spießen, stiegen die Blumenseelen hervor und setzten sich zuerst in seine </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Ohren und erzählten ihm böse Träume, flogen darauf über seine Lippen und stachen seine Zunge mit den </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">giftigen Spießen. »Nun haben wir den Toten gerächt!« sagten sie und flogen zurück in des Jasmins weiße </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Glocken.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Als es Morgen wurde, und das Fenster der Schlafstube geöffnet wurde, fuhr der Rosenelf mit der </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Bienenkönigin und dem ganzen Bienenschwarm herein, um ihn zu töten.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Aber er war schon tot; es standen Leute rings um das Bett, die sagten: »Der Jasminduft hat ihn getötet!«</seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Da verstand der Rosenelf der Blumen Rache, und er erzählte es der Königin der Bienen, und sie summte mit </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">ihrem ganzen Schwarm um den Blumentopf; die Bienen waren nicht zu verjagen; da nahm ein Mann den </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Blumentopf fort und eine der Bienen stach seine Hand, sodaß er den Topf fallen ließ und er zerbrach.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">[405] Da sahen sie den bleichen Totenschädel, und sie wußten, daß der Tote im Bette ein Mörder war.
+                    </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">Die Bienenkönigin summte in der Luft und sang von der Rache der Blumen und von dem Rosenelf, und daß </seg>
+                <seg ana="#CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38">hinter dem geringsten Blatte einer wohnt, der das Böse erzählen und rächen kann!
+                    </seg>
+                
+                https://textgridrep.org/browse/-/browse/jn44_0
+            </ab>
+        </body>
+        <fs xml:id="CATMA_222A120D-B59F-4BB9-85E5-8B46DBD66B38" type="CATMA_9277B342-1844-4268-B42E-2EBEB0A92C7E">
+            <f name="catma_displaycolor">
+                <string>-6298247</string>
+            </f>
+            <f name="catma_markupauthor">
+                <string>Linda.h.kessler@web.de</string>
+            </f>
+        </fs>
+        <fs xml:id="CATMA_DC1D3672-C684-4DDA-A4A5-2132BA066A66" type="CATMA_1D4C9E1A-C044-4A2F-BD2D-14CE9B491BB0">
+            <f name="catma_markupauthor">
+                <string>Linda.h.kessler@web.de</string>
+            </f>
+            <f name="catma_displaycolor">
+                <string>-5750710</string>
+            </f>
+        </fs>
+        <fs xml:id="CATMA_54D37776-71D2-47BF-91E8-0A95A5FE3287" type="CATMA_5592B31E-F37D-4F0D-AC9D-07C9AE38653E">
+            <f name="catma_displaycolor">
+                <string>-4296849</string>
+            </f>
+            <f name="catma_markupauthor">
+                <string>Linda.h.kessler@web.de</string>
+            </f>
+        </fs>
+        <fs xml:id="CATMA_2827246D-7BCB-4BEC-9F95-74C6B622F395" type="CATMA_1D4C9E1A-C044-4A2F-BD2D-14CE9B491BB0">
+            <f name="catma_markupauthor">
+                <string>Linda.h.kessler@web.de</string>
+            </f>
+            <f name="catma_displaycolor">
+                <string>-5750710</string>
+            </f>
+        </fs>
+        <fs xml:id="CATMA_BD757C0F-B53E-43F4-8142-9DB7D2695DCD" type="CATMA_5592B31E-F37D-4F0D-AC9D-07C9AE38653E">
+            <f name="catma_displaycolor">
+                <string>-4296849</string>
+            </f>
+            <f name="catma_markupauthor">
+                <string>Linda.h.kessler@web.de</string>
+            </f>
+        </fs>
+        <fs xml:id="CATMA_94E1BDA0-E3BB-426A-9E6F-252CC64FC236" type="CATMA_1D4C9E1A-C044-4A2F-BD2D-14CE9B491BB0">
+            <f name="catma_markupauthor">
+                <string>Linda.h.kessler@web.de</string>
+            </f>
+            <f name="catma_displaycolor">
+                <string>-5750710</string>
+            </f>
+        </fs>
+    </text>
+</TEI>
