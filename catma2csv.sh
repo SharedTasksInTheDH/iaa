@@ -1,0 +1,5 @@
+#!/bin/bash
+
+MAINCLASS="de.unistuttgart.ims.creta.sharedtask.Convert"
+
+mvn -q exec:java -Dexec.mainClass="$MAINCLASS" -Dexec.args="--input $1 --annotatorId $2"
