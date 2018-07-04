@@ -21,7 +21,17 @@ The columns represent:
 
 The offsets are currently character offsets, but they will likely be converted to token offsets at some point.
 
+## Compilation
+
+Easiest done using maven:
+
+```
+mvn package
+```
+
 ## Execute
+
+We provide a small shell script to facilitate execution of the program. 
 
 ```
 bash catma2csv.sh FILENAME ANNOTATORNAME
