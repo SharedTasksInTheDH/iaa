@@ -22,6 +22,8 @@ import org.eclipse.collections.api.map.MutableMap;
 import org.eclipse.collections.api.multimap.MutableMultimap;
 import org.eclipse.collections.impl.factory.Maps;
 import org.eclipse.collections.impl.factory.Multimaps;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
@@ -46,6 +48,7 @@ public class CatmaTei2CSV {
 			return Integer.compare(o1.getBegin(), o2.getBegin());
 		}
 	});
+	MutableMap<String, String> propertiesMap = Maps.mutable.empty();
 
 	public CatmaTei2CSV(File file) {
 		this.file = file;
@@ -58,6 +61,22 @@ public class CatmaTei2CSV {
 
 		reader.addRule("fs", Annotation.class, (a, e) -> {
 			fsMap.put(e.attr("xml:id"), e.attr("type"));
+
+			StringBuilder b = new StringBuilder();
+			Elements propertyElements = e.select("f");
+			for (int i = 0; i < propertyElements.size(); i++) {
+				Element pElement = propertyElements.get(i);
+				String name = pElement.attr("name");
+				if (!name.startsWith("catma")) {
+					b.append('+');
+					b.append(name);
+					if (pElement.hasText()) {
+						b.append("=");
+						b.append(pElement.text());
+					}
+				}
+			}
+			propertiesMap.put(e.attr("xml:id"), b.toString());
 		});
 
 		reader.addRule("seg", Seg.class, (seg, element) -> {
@@ -88,7 +107,8 @@ public class CatmaTei2CSV {
 				int begin = Integer.parseInt(getFirstToken(tokenIndex.get(first)).getId());
 				int end = Integer.parseInt(getLastToken(tokenIndex.get(last)).getId());
 				p.printRecord(getAnnotatorId().substring(0, 1) + counter++, getAnnotatorId(),
-						fsDeclMap.get(fsMap.get(id)), null, begin, end);
+						fsDeclMap.get(fsMap.get(id)) + (propertiesMap.containsKey(id) ? propertiesMap.get(id) : ""),
+						null, begin, end);
 			}
 		}
 	}
