@@ -20,6 +20,7 @@ public class Convert {
 		} else {
 			c.setAppendable(new FileWriter(getCSVFile(result)));
 			c.setMarkdownFile(getMDFile(result));
+			c.setLatexFile(getTEXFile(result));
 		}
 		c.setAnnotatorId(result.getAnnotatorId());
 
@@ -32,6 +33,10 @@ public class Convert {
 
 	public static File getMDFile(Options options) {
 		return new File(options.getOutput().getAbsolutePath() + ".md");
+	}
+
+	public static File getTEXFile(Options options) {
+		return new File(options.getOutput().getAbsolutePath() + ".tex");
 	}
 
 	interface Options {

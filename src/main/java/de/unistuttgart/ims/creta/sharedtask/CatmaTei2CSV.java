@@ -5,8 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.csv.CSVFormat;
@@ -38,6 +42,7 @@ public class CatmaTei2CSV {
 
 	Appendable appendable;
 	File markdownFile = null;
+	File latexFile = null;
 
 	GenericXmlReader<DocumentMetaData> reader;
 
@@ -170,6 +175,50 @@ public class CatmaTei2CSV {
 				});
 				giw.write(jcas, os);
 			}
+		if (getLatexFile() != null)
+			try (
+
+					FileOutputStream os = new FileOutputStream(getLatexFile())) {
+				GenericInlineWriter<CatmaAnnotation> giw = new GenericInlineWriter<CatmaAnnotation>(
+						CatmaAnnotation.class);
+				List<CatmaAnnotation> annoList = new LinkedList<CatmaAnnotation>();
+
+				giw.setTagFactory(new InlineTagFactory<CatmaAnnotation>() {
+
+					@Override
+					public String getBeginTag(CatmaAnnotation anno) {
+						if (!annoList.contains(anno))
+							annoList.add(anno);
+						int idx = annoList.indexOf(anno);
+						return "\\colorbox{yellow}{[\\footnotemark[" + idx + "]}\\footnotetext[" + idx + "]{"
+								+ fsDeclMap.get(fsMap.get(anno.getId())) + anno.getProperties() + "}";
+					}
+
+					@Override
+					public String getEndTag(CatmaAnnotation anno) {
+						if (!annoList.contains(anno))
+							annoList.add(anno);
+						int idx = annoList.indexOf(anno);
+						return "\\colorbox{yellow}{]\\footnotemark[" + idx + "]}\\footnotetext[" + idx + "]{"
+								+ fsDeclMap.get(fsMap.get(anno.getId())) + anno.getProperties() + "}";
+					}
+
+					@Override
+					public String getEmptyTag(CatmaAnnotation anno) {
+						return "\\colorbox{yellow}{[]}";
+					}
+
+				});
+				OutputStreamWriter osw = new OutputStreamWriter(os);
+				osw.write("\\documentclass{scrartcl}\n");
+				osw.write("\\usepackage{xcolor}\n");
+				osw.write("\\begin{document}\n");
+				StringWriter sw = new StringWriter();
+				giw.write(jcas, sw);
+				osw.write(sw.toString().replaceAll("_", "\\\\_"));
+				osw.write("\\end{document}\n");
+				osw.flush();
+			}
 	}
 
 	private Token getFirstToken(Collection<Token> coll) {
@@ -218,5 +267,13 @@ public class CatmaTei2CSV {
 
 	public void setMarkdownFile(File markdownFile) {
 		this.markdownFile = markdownFile;
+	}
+
+	public File getLatexFile() {
+		return latexFile;
+	}
+
+	public void setLatexFile(File latexFile) {
+		this.latexFile = latexFile;
 	}
 }
