@@ -18,11 +18,20 @@ public class Convert {
 		if (result.getOutput() == null) {
 			c.setAppendable(System.out);
 		} else {
-			c.setAppendable(new FileWriter(result.getOutput()));
+			c.setAppendable(new FileWriter(getCSVFile(result)));
+			c.setMarkdownFile(getMDFile(result));
 		}
 		c.setAnnotatorId(result.getAnnotatorId());
 
 		c.process();
+	}
+
+	public static File getCSVFile(Options options) {
+		return new File(options.getOutput().getAbsolutePath() + ".csv");
+	}
+
+	public static File getMDFile(Options options) {
+		return new File(options.getOutput().getAbsolutePath() + ".md");
 	}
 
 	interface Options {
