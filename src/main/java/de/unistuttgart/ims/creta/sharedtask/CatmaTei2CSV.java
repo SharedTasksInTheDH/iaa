@@ -123,30 +123,43 @@ public class CatmaTei2CSV {
 				// find begin
 				int begin = -1;
 				int elementToTry = 0;
-				while (begin == -1) {
-					Seg first = annoMap.get(id).toList().get(elementToTry++);
-					try {
-						begin = Integer.parseInt(getFirstToken(tokenIndex.get(first)).getId());
-					} catch (java.lang.IllegalArgumentException e) {
+				try {
+					while (begin == -1) {
+						try {
+							Seg first = annoMap.get(id).toList().get(elementToTry);
+							begin = Integer.parseInt(getFirstToken(tokenIndex.get(first)).getId());
+						} catch (java.lang.IllegalArgumentException e) {
+
+						} finally {
+							elementToTry++;
+						}
 
 					}
+				} catch (java.lang.IndexOutOfBoundsException e) {
+
 				}
 
 				// find end
 				int end = Integer.MAX_VALUE;
 				elementToTry = annoMap.get(id).toList().size() - 1;
-				while (end == Integer.MAX_VALUE) {
-					Seg last = annoMap.get(id).toList().get(elementToTry--);
-					try {
-						end = Integer.parseInt(getLastToken(tokenIndex.get(last)).getId());
-					} catch (java.lang.IllegalArgumentException e) {
+				try {
+					while (end == Integer.MAX_VALUE) {
+						try {
+							Seg last = annoMap.get(id).toList().get(elementToTry);
+							end = Integer.parseInt(getLastToken(tokenIndex.get(last)).getId());
+						} catch (java.lang.IllegalArgumentException e) {
 
+						} finally {
+							elementToTry--;
+						}
 					}
-				}
+				} catch (java.lang.IndexOutOfBoundsException e) {
 
-				p.printRecord(getAnnotatorId().substring(0, 1) + counter++, getAnnotatorId(),
-						fsDeclMap.get(fsMap.get(id)) + (propertiesMap.containsKey(id) ? propertiesMap.get(id) : ""),
-						null, begin, end);
+				}
+				if (begin != -1 && end != -1)
+					p.printRecord(getAnnotatorId().substring(0, 1) + counter++, getAnnotatorId(),
+							fsDeclMap.get(fsMap.get(id)) + (propertiesMap.containsKey(id) ? propertiesMap.get(id) : ""),
+							null, begin, end);
 			}
 		}
 		if (markdownFile != null)
@@ -210,13 +223,14 @@ public class CatmaTei2CSV {
 
 				});
 				OutputStreamWriter osw = new OutputStreamWriter(os);
-				osw.write("\\documentclass{scrartcl}\n");
-				osw.write("\\usepackage{xcolor}\n");
-				osw.write("\\begin{document}\n");
 				StringWriter sw = new StringWriter();
 				giw.write(jcas, sw);
-				osw.write(sw.toString().replaceAll("_", "\\\\_"));
-				osw.write("\\end{document}\n");
+				String s = sw.toString();
+				s = s.replaceAll("_", "\\\\_");
+				s = s.replaceAll("#", "\\\\#");
+				s = s.replaceAll("&", "\\\\&");
+				s = s.replaceAll("\n", "\n\n");
+				osw.write(s);
 				osw.flush();
 			}
 	}
