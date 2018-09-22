@@ -51,7 +51,7 @@ public class CatmaTei2CSV {
 	List<String> featureStructureTypes;
 	List<String> featureTypes;
 
-	transient JCas jcas;
+	transient JCas jcas = null;
 
 	MutableMap<String, String> fsDeclMap = Maps.mutable.empty();
 	MutableMap<String, String> fsMap = Maps.mutable.empty();
@@ -109,7 +109,9 @@ public class CatmaTei2CSV {
 
 	public void process() throws UIMAException, FileNotFoundException, IOException {
 		process0();
-		printResult();
+		writeCSV();
+		writeMarkdown();
+		writeLaTeX();
 	}
 
 	public void process0() throws UIMAException, FileNotFoundException, IOException {
@@ -125,7 +127,7 @@ public class CatmaTei2CSV {
 
 	}
 
-	public void printResult() throws IOException {
+	public void writeCSV() throws IOException {
 		Map<Seg, Collection<Token>> tokenIndex = JCasUtil.indexCovered(jcas, Seg.class, Token.class);
 		int counter = 0;
 		try (CSVPrinter p = new CSVPrinter(getAppendable(), CSVFormat.DEFAULT)) {
@@ -183,7 +185,11 @@ public class CatmaTei2CSV {
 							null, begin, end);
 			}
 		}
-		if (markdownFile != null)
+
+	}
+
+	public void writeMarkdown() throws FileNotFoundException, IOException {
+		if (jcas != null && markdownFile != null)
 			try (
 
 					FileOutputStream os = new FileOutputStream(markdownFile)) {
@@ -209,7 +215,10 @@ public class CatmaTei2CSV {
 				});
 				giw.write(jcas, os);
 			}
-		if (getLatexFile() != null)
+	}
+
+	public void writeLaTeX() throws FileNotFoundException, IOException {
+		if (jcas != null && getLatexFile() != null)
 			try (
 
 					FileOutputStream os = new FileOutputStream(getLatexFile())) {
