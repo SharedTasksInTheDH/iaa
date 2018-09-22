@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.util.Collection;
@@ -21,8 +22,10 @@ import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.map.MutableMap;
 import org.eclipse.collections.api.multimap.MutableMultimap;
+import org.eclipse.collections.impl.factory.Lists;
 import org.eclipse.collections.impl.factory.Maps;
 import org.eclipse.collections.impl.factory.Multimaps;
 import org.jsoup.nodes.Element;
@@ -38,7 +41,7 @@ import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 import de.unistuttgart.ims.uima.io.xml.InlineTagFactory;
 
 public class CatmaTei2CSV {
-	File file;
+	InputStream file;
 
 	Appendable appendable;
 	File markdownFile = null;
@@ -67,14 +70,17 @@ public class CatmaTei2CSV {
 	});
 	MutableMap<String, String> propertiesMap = Maps.mutable.empty();
 
-	public CatmaTei2CSV(File file) {
+	public CatmaTei2CSV(File file) throws FileNotFoundException {
+		this(new FileInputStream(file));
+	}
+
+	public CatmaTei2CSV(InputStream file) {
 		this.file = file;
 		this.reader = new GenericXmlReader<DocumentMetaData>(DocumentMetaData.class);
 		reader.setPreserveWhitespace(false);
 		reader.setTextRootSelector("TEI > text > body");
 		reader.addGlobalRule("fsDecl", (a, e) -> {
 			String typeName = e.selectFirst("fsDescr").text();
-			// System.err.println("fsDecl: " + typeName + ": " + e.attr("xml:id"));
 			if (featureStructureTypes == null || featureStructureTypes.contains(typeName))
 				fsDeclMap.put(e.attr("xml:id"), typeName);
 		});
@@ -119,7 +125,7 @@ public class CatmaTei2CSV {
 
 	public void process0() throws UIMAException, FileNotFoundException, IOException {
 		jcas = JCasFactory.createJCas();
-		reader.read(jcas, new FileInputStream(file));
+		reader.read(jcas, file);
 
 		SimplePipeline.runPipeline(jcas, AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
@@ -181,17 +187,21 @@ public class CatmaTei2CSV {
 
 	}
 
+	public MutableList<CatmaAnnotation> getFilteredCatmaAnnotations() {
+		return Lists.mutable.ofAll(JCasUtil.select(jcas, CatmaAnnotation.class)).select(ca -> ca.getTokenBegin() != -1)
+				.select(ca -> ca.getTokenEnd() != Integer.MAX_VALUE)
+				.select(ca -> fsDeclMap.containsKey(fsMap.get(ca.getId())));
+	}
+
 	public void writeCSV() throws IOException {
 		int counter = 0;
 		try (CSVPrinter p = new CSVPrinter(getAppendable(), CSVFormat.DEFAULT)) {
 			// iterate over CatmaAnnotations
-			for (CatmaAnnotation ca : JCasUtil.select(jcas, CatmaAnnotation.class)) {
+			for (CatmaAnnotation ca : getFilteredCatmaAnnotations()) {
 				String id = ca.getId();
-				String type = fsMap.get(id);
-				if (ca.getTokenBegin() != -1 && ca.getTokenEnd() != Integer.MAX_VALUE && fsDeclMap.containsKey(type))
-					p.printRecord(getAnnotatorId().substring(0, 1) + counter++, getAnnotatorId(),
-							fsDeclMap.get(fsMap.get(id)) + (propertiesMap.containsKey(id) ? propertiesMap.get(id) : ""),
-							null, ca.getTokenBegin(), ca.getTokenEnd());
+				p.printRecord(getAnnotatorId().substring(0, 1) + counter++, getAnnotatorId(),
+						fsDeclMap.get(fsMap.get(id)) + (propertiesMap.containsKey(id) ? propertiesMap.get(id) : ""),
+						null, ca.getTokenBegin(), ca.getTokenEnd());
 			}
 		}
 
@@ -345,5 +355,9 @@ public class CatmaTei2CSV {
 
 	public void setFeatureTypes(List<String> featureTypes) {
 		this.featureTypes = featureTypes;
+	}
+
+	public JCas getJCas() {
+		return jcas;
 	}
 }
