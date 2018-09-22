@@ -21,6 +21,7 @@ import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.util.XmlCasSerializer;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.map.MutableMap;
 import org.eclipse.collections.api.multimap.MutableMultimap;
@@ -29,6 +30,7 @@ import org.eclipse.collections.impl.factory.Maps;
 import org.eclipse.collections.impl.factory.Multimaps;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.xml.sax.SAXException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
@@ -112,9 +114,19 @@ public class CatmaTei2CSV {
 
 	public void process() throws UIMAException, FileNotFoundException, IOException {
 		process0();
+		calculateTokenOffsets();
+		writeXmi();
 		writeCSV();
 		writeMarkdown();
 		writeLaTeX();
+	}
+
+	private void writeXmi() throws FileNotFoundException, IOException {
+		try {
+			XmlCasSerializer.serialize(jcas.getCas(), new FileOutputStream("target/Test.xmi"));
+		} catch (SAXException e) { // TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private JCas process(InputStream is) throws UIMAException, IOException {
@@ -123,11 +135,6 @@ public class CatmaTei2CSV {
 
 		SimplePipeline.runPipeline(jcas, AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
-		int tokenNumber = 0;
-		for (Token token : JCasUtil.select(jcas, Token.class)) {
-			token.setId(String.valueOf(tokenNumber++));
-		}
-		Map<Seg, Collection<Token>> tokenIndex = JCasUtil.indexCovered(jcas, Seg.class, Token.class);
 
 		for (String id : annoMap.keySet()) {
 			CatmaAnnotation ca = new CatmaAnnotation(jcas);
@@ -139,14 +146,27 @@ public class CatmaTei2CSV {
 			ca.setCatmaType(fsDeclMap.get(fsMap.get(id)));
 			ca.addToIndexes();
 
+		}
+		return jcas;
+	}
+
+	private void calculateTokenOffsets() {
+		int tokenNumber = 0;
+		for (Token token : JCasUtil.select(jcas, Token.class)) {
+			token.setId(String.valueOf(tokenNumber++));
+		}
+
+		Map<CatmaAnnotation, Collection<Token>> tokenIndex = JCasUtil.indexCovered(jcas, CatmaAnnotation.class,
+				Token.class);
+
+		for (CatmaAnnotation ca : JCasUtil.select(jcas, CatmaAnnotation.class)) {
 			// find begin
 			int begin = -1;
 			int elementToTry = 0;
 			try {
 				while (begin == -1) {
 					try {
-						Seg first = annoMap.get(id).toList().get(elementToTry);
-						begin = Integer.parseInt(getFirstToken(tokenIndex.get(first)).getId());
+						begin = Integer.parseInt(getFirstToken(tokenIndex.get(ca)).getId());
 					} catch (java.lang.IllegalArgumentException e) {
 
 					} finally {
@@ -160,13 +180,12 @@ public class CatmaTei2CSV {
 			ca.setTokenBegin(begin);
 
 			// find end
+			elementToTry = Integer.MAX_VALUE;
 			int end = Integer.MAX_VALUE;
-			elementToTry = annoMap.get(id).toList().size() - 1;
 			try {
 				while (end == Integer.MAX_VALUE) {
 					try {
-						Seg last = annoMap.get(id).toList().get(elementToTry);
-						end = Integer.parseInt(getLastToken(tokenIndex.get(last)).getId());
+						end = Integer.parseInt(getLastToken(tokenIndex.get(ca)).getId());
 					} catch (java.lang.IllegalArgumentException e) {
 
 					} finally {
@@ -178,7 +197,7 @@ public class CatmaTei2CSV {
 			}
 			ca.setTokenEnd(end);
 		}
-		return jcas;
+
 	}
 
 	public void process0() throws UIMAException, FileNotFoundException, IOException {

@@ -17,7 +17,9 @@ public class Convert {
 	public static void main(String[] args) throws UIMAException, FileNotFoundException, IOException {
 		Options result = CliFactory.parseArguments(Options.class, args);
 		CatmaTei2CSV c = new CatmaTei2CSV();
-		c.add(new FileInputStream(result.getInput()));
+		for (File f : result.getInput()) {
+			c.add(new FileInputStream(f));
+		}
 		if (result.getOutput() == null) {
 			c.setAppendable(System.out);
 		} else {
@@ -47,7 +49,7 @@ public class Convert {
 
 	interface Options {
 		@Option
-		File getInput();
+		List<File> getInput();
 
 		@Option(defaultToNull = true)
 		File getOutput();
