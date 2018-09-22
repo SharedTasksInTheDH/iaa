@@ -55,6 +55,9 @@ public class CatmaTei2CSV {
 
 	MutableMap<String, String> fsDeclMap = Maps.mutable.empty();
 	MutableMap<String, String> fsMap = Maps.mutable.empty();
+	/**
+	 * This map contains annotation ids and the seg annotations they refer to
+	 */
 	MutableMultimap<String, Seg> annoMap = Multimaps.mutable.sortedSet.with(new Comparator<Seg>() {
 
 		@Override
@@ -124,65 +127,71 @@ public class CatmaTei2CSV {
 		for (Token token : JCasUtil.select(jcas, Token.class)) {
 			token.setId(String.valueOf(tokenNumber++));
 		}
+		Map<Seg, Collection<Token>> tokenIndex = JCasUtil.indexCovered(jcas, Seg.class, Token.class);
+
+		for (String id : annoMap.keySet()) {
+			CatmaAnnotation ca = new CatmaAnnotation(jcas);
+			ca.setBegin(annoMap.get(id).toList().getFirst().getBegin());
+			ca.setEnd(annoMap.get(id).toList().getLast().getEnd());
+			ca.setId(id);
+			if (propertiesMap.containsKey(id))
+				ca.setProperties(propertiesMap.get(id));
+
+			ca.addToIndexes();
+
+			// find begin
+			int begin = -1;
+			int elementToTry = 0;
+			try {
+				while (begin == -1) {
+					try {
+						Seg first = annoMap.get(id).toList().get(elementToTry);
+						begin = Integer.parseInt(getFirstToken(tokenIndex.get(first)).getId());
+					} catch (java.lang.IllegalArgumentException e) {
+
+					} finally {
+						elementToTry++;
+					}
+
+				}
+			} catch (java.lang.IndexOutOfBoundsException e) {
+
+			}
+			ca.setTokenBegin(begin);
+
+			// find end
+			int end = Integer.MAX_VALUE;
+			elementToTry = annoMap.get(id).toList().size() - 1;
+			try {
+				while (end == Integer.MAX_VALUE) {
+					try {
+						Seg last = annoMap.get(id).toList().get(elementToTry);
+						end = Integer.parseInt(getLastToken(tokenIndex.get(last)).getId());
+					} catch (java.lang.IllegalArgumentException e) {
+
+					} finally {
+						elementToTry--;
+					}
+				}
+			} catch (java.lang.IndexOutOfBoundsException e) {
+
+			}
+			ca.setTokenEnd(end);
+		}
 
 	}
 
 	public void writeCSV() throws IOException {
-		Map<Seg, Collection<Token>> tokenIndex = JCasUtil.indexCovered(jcas, Seg.class, Token.class);
 		int counter = 0;
 		try (CSVPrinter p = new CSVPrinter(getAppendable(), CSVFormat.DEFAULT)) {
-			for (String id : annoMap.keySet()) {
-				CatmaAnnotation ca = new CatmaAnnotation(jcas);
-				ca.setBegin(annoMap.get(id).toList().getFirst().getBegin());
-				ca.setEnd(annoMap.get(id).toList().getLast().getEnd());
-				ca.setId(id);
-				if (propertiesMap.containsKey(id))
-					ca.setProperties(propertiesMap.get(id));
-
-				ca.addToIndexes();
-
-				// find begin
-				int begin = -1;
-				int elementToTry = 0;
-				try {
-					while (begin == -1) {
-						try {
-							Seg first = annoMap.get(id).toList().get(elementToTry);
-							begin = Integer.parseInt(getFirstToken(tokenIndex.get(first)).getId());
-						} catch (java.lang.IllegalArgumentException e) {
-
-						} finally {
-							elementToTry++;
-						}
-
-					}
-				} catch (java.lang.IndexOutOfBoundsException e) {
-
-				}
-
-				// find end
-				int end = Integer.MAX_VALUE;
-				elementToTry = annoMap.get(id).toList().size() - 1;
-				try {
-					while (end == Integer.MAX_VALUE) {
-						try {
-							Seg last = annoMap.get(id).toList().get(elementToTry);
-							end = Integer.parseInt(getLastToken(tokenIndex.get(last)).getId());
-						} catch (java.lang.IllegalArgumentException e) {
-
-						} finally {
-							elementToTry--;
-						}
-					}
-				} catch (java.lang.IndexOutOfBoundsException e) {
-
-				}
+			// iterate over CatmaAnnotations
+			for (CatmaAnnotation ca : JCasUtil.select(jcas, CatmaAnnotation.class)) {
+				String id = ca.getId();
 				String type = fsMap.get(id);
-				// System.err.println(type);
-				if (begin != -1 && end != -1 && fsDeclMap.containsKey(type))
+				if (ca.getTokenBegin() != -1 && ca.getTokenEnd() != Integer.MAX_VALUE && fsDeclMap.containsKey(type))
 					p.printRecord(getAnnotatorId().substring(0, 1) + counter++, getAnnotatorId(),
 							fsDeclMap.get(fsMap.get(id)) + (propertiesMap.containsKey(id) ? propertiesMap.get(id) : ""),
-							null, begin, end);
+							null, ca.getTokenBegin(), ca.getTokenEnd());
 			}
 		}
 

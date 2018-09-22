@@ -1,26 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
-    	
+      	
+  
   
   <name>Catma Converter</name>
-    	
+      	
+  
   
   <description/>
-    	
+      	
+  
   
   <version>1</version>
-    	
+      	
+  
   
   <vendor>Nils Reiter</vendor>
-    	
+      	
+  
   
   <types>
-            
+                
+    
+    
+    <typeDescription>
+                        
+      
+      
+      <name>de.unistuttgart.ims.creta.sharedtask.iaa.type.Seg</name>
+                        
+      
+      
+      <description/>
+                        
+      
+      
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+                        
+      
+      
+      <features>
+                                
+        
+        
+        <featureDescription>
+                                        
+          
+          
+          <name>Id</name>
+                                        
+          
+          
+          <description/>
+                                        
+          
+          
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+                                      
+        
+        
+        </featureDescription>
+                              
+      
+      
+      </features>
+                      
+    
+    
+    </typeDescription>
+          
     
     <typeDescription>
                   
       
-      <name>de.unistuttgart.ims.creta.sharedtask.iaa.type.Seg</name>
+      <name>de.unistuttgart.ims.creta.sharedtask.iaa.type.CatmaAnnotation</name>
                   
       
       <description/>
@@ -45,47 +98,49 @@
                             
         
         </featureDescription>
+                        
+        
+        <featureDescription>
+                              
+          
+          <name>Properties</name>
+                              
+          
+          <description/>
+                              
+          
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+                            
+        
+        </featureDescription>
                       
       
+        <featureDescription>
+                    
+          <name>TokenBegin</name>
+                    
+          <description/>
+                    
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+                  
+        </featureDescription>
+                
+        <featureDescription>
+                    
+          <name>TokenEnd</name>
+                    
+          <description/>
+                    
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+                  
+        </featureDescription>
       </features>
                 
     
     </typeDescription>
       
-    <typeDescription>
-            
-      <name>de.unistuttgart.ims.creta.sharedtask.iaa.type.CatmaAnnotation</name>
-            
-      <description/>
-            
-      <supertypeName>uima.tcas.Annotation</supertypeName>
-            
-      <features>
-                
-        <featureDescription>
-                    
-          <name>Id</name>
-                    
-          <description/>
-                    
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-                  
-        </featureDescription>
-                
-        <featureDescription>
-                    
-          <name>Properties</name>
-                    
-          <description/>
-                    
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-                  
-        </featureDescription>
-              
-      </features>
-          
-    </typeDescription>
   </types>
-    
+      
+
 
 </typeSystemDescription>
