@@ -58,4 +58,36 @@ public class TestCatmaTei2CSV {
 
 	}
 
+	@Test
+	public void testTest2() throws UIMAException, FileNotFoundException, IOException {
+		CatmaTei2CSV conv = null;
+		conv = new CatmaTei2CSV(getClass().getResourceAsStream("/Test2.xml"));
+		assertNotNull(conv);
+		conv.process0();
+
+		MutableList<CatmaAnnotation> l = conv.getFilteredCatmaAnnotations();
+		assertFalse(l.isEmpty());
+		assertEquals(3, l.size());
+
+		CatmaAnnotation ca;
+
+		ca = l.get(0);
+
+		assertEquals(0, ca.getTokenBegin());
+		assertEquals(0, ca.getTokenEnd());
+		assertEquals("C1", ca.getCatmaType());
+
+		ca = l.get(1);
+
+		assertEquals(1, ca.getTokenBegin());
+		assertEquals(2, ca.getTokenEnd());
+		assertEquals("C2", ca.getCatmaType());
+
+		ca = l.get(2);
+
+		assertEquals(2, ca.getTokenBegin());
+		assertEquals(6, ca.getTokenEnd());
+		assertEquals("C1", ca.getCatmaType());
+	}
+
 }

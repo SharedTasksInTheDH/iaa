@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:lang="en" xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Rosen-Elf-Metaphern_Annotator1_2018-05-03T09:09:14.909</title>
+                <author>empty</author>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>empty</publisher>
+            </publicationStmt>
+            <sourceDesc>
+                <p>empty</p>
+                <ab>
+                    <fs xml:id="CATMA_TECH_DESC">
+                        <f name="version">
+                            <string>5</string>
+                        </f>
+                    </fs>
+                </ab>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <fsdDecl xml:id="CATMA_1" n="Erzahlebenen 2018-05-03T09:08:02.000+0200">
+                <fsDecl xml:id="CATMA_C1" n="2018-05-03T09:08:02.000+0200" type="CATMA_C1">
+                    <fsDescr>C1</fsDescr>
+                </fsDecl>
+                <fsDecl xml:id="CATMA_C2" n="2018-05-03T09:05:47.000+0200" type="CATMA_C2">
+                    <fsDescr>C2</fsDescr>
+                </fsDecl>
+                <fsDecl xml:id="CATMA_C3" n="2018-05-03T09:05:40.000+0200" type="CATMA_C3">
+                    <fsDescr>C3</fsDescr>
+                </fsDecl>
+            </fsdDecl>
+        </encodingDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <ab type="catma"><seg ana="#CATMA_A1">Eins</seg> <seg ana="#CATMA_A2">Zwei</seg> <seg ana="#CATMA_A2 #CATMA_A3">Drei</seg> <seg ana="#CATMA_A3">Vier Fünf Sechs Sieben</seg> Acht Neun Zehn</ab>
+               
+        </body>
+        <fs xml:id="CATMA_A1" type="CATMA_C1">
+            <f name="catma_displaycolor">
+                <string>-6298247</string>
+            </f>
+            <f name="catma_markupauthor">
+                <string>Annotator1</string>
+            </f>
+        </fs>
+        <fs xml:id="CATMA_A2" type="CATMA_C2">
+            <f name="catma_markupauthor">
+                <string>Annotator1</string>
+            </f>
+            <f name="catma_displaycolor">
+                <string>-5750710</string>
+            </f>
+        </fs>
+        <fs xml:id="CATMA_A3" type="CATMA_C1">
+            <f name="catma_displaycolor">
+                <string>-4296849</string>
+            </f>
+            <f name="catma_markupauthor">
+                <string>Annotator1</string>
+            </f>
+        </fs>
+    </text>
+</TEI>
