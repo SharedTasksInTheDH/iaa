@@ -10,6 +10,7 @@ import org.apache.uima.util.CasCopier;
 
 public class JCasConcat {
 	public JCas concat(String sep, JCas... jcass) throws UIMAException {
+		System.err.println("Concatenating " + jcass.length + " JCas objects.");
 		JCas jcas = JCasFactory.createJCas();
 
 		StringBuilder b = new StringBuilder();
@@ -25,6 +26,7 @@ public class JCasConcat {
 		for (int i = 0; i < jcass.length; i++) {
 			if (i != 0)
 				offset += sep.length();
+			System.err.println("   copying feature structures");
 			copy(jcass[i], jcas, offset);
 			offset += jcass[i].getDocumentText().length();
 		}
