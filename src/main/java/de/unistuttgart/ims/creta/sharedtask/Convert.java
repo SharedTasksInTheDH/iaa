@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.uima.UIMAException;
 
@@ -22,8 +23,11 @@ public class Convert {
 			c.setMarkdownFile(getMDFile(result));
 			c.setLatexFile(getTEXFile(result));
 		}
+		c.setFeatureStructureTypes(result.getCategories());
+		c.setFeatureTypes(result.getFeatures());
 		c.setAnnotatorId(result.getAnnotatorId());
-
+		// System.err.println("Categories: " + result.getCategories());
+		// System.err.println("Features: " + result.getFeatures());
 		c.process();
 	}
 
@@ -48,5 +52,11 @@ public class Convert {
 
 		@Option(defaultToNull = true)
 		String getAnnotatorId();
+
+		@Option(defaultValue = {})
+		List<String> getFeatures();
+
+		@Option(defaultToNull = true)
+		List<String> getCategories();
 	}
 }

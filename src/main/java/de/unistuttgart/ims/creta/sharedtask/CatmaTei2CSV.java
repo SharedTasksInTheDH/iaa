@@ -48,6 +48,9 @@ public class CatmaTei2CSV {
 
 	String annotatorId;
 
+	List<String> featureStructureTypes;
+	List<String> featureTypes;
+
 	MutableMap<String, String> fsDeclMap = Maps.mutable.empty();
 	MutableMap<String, String> fsMap = Maps.mutable.empty();
 	MutableMultimap<String, Seg> annoMap = Multimaps.mutable.sortedSet.with(new Comparator<Seg>() {
@@ -65,23 +68,29 @@ public class CatmaTei2CSV {
 		reader.setPreserveWhitespace(false);
 		reader.setTextRootSelector("TEI > text > body");
 		reader.addGlobalRule("fsDecl", (a, e) -> {
-			fsDeclMap.put(e.attr("xml:id"), e.selectFirst("fsDescr").text());
+			String typeName = e.selectFirst("fsDescr").text();
+			// System.err.println("fsDecl: " + typeName + ": " + e.attr("xml:id"));
+			if (featureStructureTypes == null || featureStructureTypes.contains(typeName))
+				fsDeclMap.put(e.attr("xml:id"), typeName);
 		});
 
 		reader.addGlobalRule("fs", (a, e) -> {
 			fsMap.put(e.attr("xml:id"), e.attr("type"));
-
+			// System.err.println("fs: " + e.attr("type") + ": " + e.attr("xml:id"));
 			StringBuilder b = new StringBuilder();
 			Elements propertyElements = e.select("f");
 			for (int i = 0; i < propertyElements.size(); i++) {
 				Element pElement = propertyElements.get(i);
 				String name = pElement.attr("name");
 				if (!name.startsWith("catma")) {
-					b.append('+');
-					b.append(name);
-					if (pElement.hasText()) {
-						b.append("=");
-						b.append(pElement.text());
+					// System.err.println(name);
+					if (featureTypes == null || featureTypes.contains(name)) {
+						b.append('+');
+						b.append(name);
+						if (pElement.hasText()) {
+							b.append("=");
+							b.append(pElement.text());
+						}
 					}
 				}
 			}
@@ -156,7 +165,9 @@ public class CatmaTei2CSV {
 				} catch (java.lang.IndexOutOfBoundsException e) {
 
 				}
-				if (begin != -1 && end != -1)
+				String type = fsMap.get(id);
+				// System.err.println(type);
+				if (begin != -1 && end != -1 && fsDeclMap.containsKey(type))
 					p.printRecord(getAnnotatorId().substring(0, 1) + counter++, getAnnotatorId(),
 							fsDeclMap.get(fsMap.get(id)) + (propertiesMap.containsKey(id) ? propertiesMap.get(id) : ""),
 							null, begin, end);
@@ -222,6 +233,7 @@ public class CatmaTei2CSV {
 					}
 
 				});
+
 				OutputStreamWriter osw = new OutputStreamWriter(os);
 				StringWriter sw = new StringWriter();
 				giw.write(jcas, sw);
@@ -289,5 +301,21 @@ public class CatmaTei2CSV {
 
 	public void setLatexFile(File latexFile) {
 		this.latexFile = latexFile;
+	}
+
+	public List<String> getFeatureStructureTypes() {
+		return featureStructureTypes;
+	}
+
+	public void setFeatureStructureTypes(List<String> featureStructureTypes) {
+		this.featureStructureTypes = featureStructureTypes;
+	}
+
+	public List<String> getFeatureTypes() {
+		return featureTypes;
+	}
+
+	public void setFeatureTypes(List<String> featureTypes) {
+		this.featureTypes = featureTypes;
 	}
 }
