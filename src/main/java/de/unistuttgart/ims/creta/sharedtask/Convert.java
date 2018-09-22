@@ -1,6 +1,7 @@
 package de.unistuttgart.ims.creta.sharedtask;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,7 +16,8 @@ public class Convert {
 
 	public static void main(String[] args) throws UIMAException, FileNotFoundException, IOException {
 		Options result = CliFactory.parseArguments(Options.class, args);
-		CatmaTei2CSV c = new CatmaTei2CSV(result.getInput());
+		CatmaTei2CSV c = new CatmaTei2CSV();
+		c.add(new FileInputStream(result.getInput()));
 		if (result.getOutput() == null) {
 			c.setAppendable(System.out);
 		} else {

@@ -1,7 +1,6 @@
 package de.unistuttgart.ims.creta.sharedtask;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,7 +40,7 @@ import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 import de.unistuttgart.ims.uima.io.xml.InlineTagFactory;
 
 public class CatmaTei2CSV {
-	InputStream file;
+	MutableList<InputStream> file = Lists.mutable.empty();
 
 	Appendable appendable;
 	File markdownFile = null;
@@ -70,12 +69,7 @@ public class CatmaTei2CSV {
 	});
 	MutableMap<String, String> propertiesMap = Maps.mutable.empty();
 
-	public CatmaTei2CSV(File file) throws FileNotFoundException {
-		this(new FileInputStream(file));
-	}
-
-	public CatmaTei2CSV(InputStream file) {
-		this.file = file;
+	public CatmaTei2CSV() {
 		this.reader = new GenericXmlReader<DocumentMetaData>(DocumentMetaData.class);
 		reader.setPreserveWhitespace(false);
 		reader.setTextRootSelector("TEI > text > body");
@@ -188,7 +182,16 @@ public class CatmaTei2CSV {
 	}
 
 	public void process0() throws UIMAException, FileNotFoundException, IOException {
-		jcas = process(file);
+		JCasConcat concat = new JCasConcat();
+		this.jcas = concat.concat("\n\n", file.collect(is -> {
+			try {
+				return process(is);
+			} catch (UIMAException | IOException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}).toArray(new JCas[file.size()]));
+
 	}
 
 	public MutableList<CatmaAnnotation> getFilteredCatmaAnnotations() {
@@ -363,5 +366,17 @@ public class CatmaTei2CSV {
 
 	public JCas getJCas() {
 		return jcas;
+	}
+
+	public boolean add(InputStream e) {
+		return file.add(e);
+	}
+
+	public boolean addAll(Collection<? extends InputStream> c) {
+		return file.addAll(c);
+	}
+
+	public boolean addAllIterable(Iterable<? extends InputStream> iterable) {
+		return file.addAllIterable(iterable);
 	}
 }

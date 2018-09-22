@@ -19,7 +19,8 @@ public class TestCatmaTei2CSV {
 	@Test
 	public void testSANTA2_o_Buechner() throws UIMAException, FileNotFoundException, IOException {
 		CatmaTei2CSV conv = null;
-		conv = new CatmaTei2CSV(getClass().getResourceAsStream("/SANTA2_o_Buechner.xml"));
+		conv = new CatmaTei2CSV();
+		conv.add(getClass().getResourceAsStream("/SANTA2_o_Buechner.xml"));
 		conv.setFeatureStructureTypes(Lists.immutable.of("level").castToList());
 		conv.setFeatureTypes(Lists.immutable.of("degree").castToList());
 
@@ -42,7 +43,8 @@ public class TestCatmaTei2CSV {
 	@Test
 	public void testSANTA4_f_Buechner() throws UIMAException, FileNotFoundException, IOException {
 		CatmaTei2CSV conv = null;
-		conv = new CatmaTei2CSV(getClass().getResourceAsStream("/SANTA4_f_Buechner.xml"));
+		conv = new CatmaTei2CSV();
+		conv.add(getClass().getResourceAsStream("/SANTA4_f_Buechner.xml"));
 		assertNotNull(conv);
 		conv.process0();
 
@@ -61,7 +63,8 @@ public class TestCatmaTei2CSV {
 	@Test
 	public void testTest2() throws UIMAException, FileNotFoundException, IOException {
 		CatmaTei2CSV conv = null;
-		conv = new CatmaTei2CSV(getClass().getResourceAsStream("/Test2.xml"));
+		conv = new CatmaTei2CSV();
+		conv.add(getClass().getResourceAsStream("/Test2.xml"));
 		assertNotNull(conv);
 		conv.process0();
 
