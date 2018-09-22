@@ -51,6 +51,8 @@ public class CatmaTei2CSV {
 	List<String> featureStructureTypes;
 	List<String> featureTypes;
 
+	transient JCas jcas;
+
 	MutableMap<String, String> fsDeclMap = Maps.mutable.empty();
 	MutableMap<String, String> fsMap = Maps.mutable.empty();
 	MutableMultimap<String, Seg> annoMap = Multimaps.mutable.sortedSet.with(new Comparator<Seg>() {
@@ -106,7 +108,12 @@ public class CatmaTei2CSV {
 	}
 
 	public void process() throws UIMAException, FileNotFoundException, IOException {
-		JCas jcas = JCasFactory.createJCas();
+		process0();
+		printResult();
+	}
+
+	public void process0() throws UIMAException, FileNotFoundException, IOException {
+		jcas = JCasFactory.createJCas();
 		reader.read(jcas, new FileInputStream(file));
 
 		SimplePipeline.runPipeline(jcas, AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
@@ -116,6 +123,9 @@ public class CatmaTei2CSV {
 			token.setId(String.valueOf(tokenNumber++));
 		}
 
+	}
+
+	public void printResult() throws IOException {
 		Map<Seg, Collection<Token>> tokenIndex = JCasUtil.indexCovered(jcas, Seg.class, Token.class);
 		int counter = 0;
 		try (CSVPrinter p = new CSVPrinter(getAppendable(), CSVFormat.DEFAULT)) {
