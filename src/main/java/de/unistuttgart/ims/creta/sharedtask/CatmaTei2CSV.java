@@ -156,7 +156,7 @@ public class CatmaTei2CSV {
 	}
 
 	private void calculateTokenOffsets() {
-		System.err.println("Calculating token offsets.");
+		// System.err.println("Calculating token offsets.");
 		int tokenNumber = 0;
 		for (Token token : JCasUtil.select(jcas, Token.class)) {
 			token.setId(String.valueOf(tokenNumber++));
@@ -187,7 +187,7 @@ public class CatmaTei2CSV {
 				e.printStackTrace();
 			}
 		}
-		System.err.println("Finished calculating token offsets.");
+		// System.err.println("Finished calculating token offsets.");
 
 	}
 
@@ -195,7 +195,7 @@ public class CatmaTei2CSV {
 		JCasConcat concat = new JCasConcat();
 		this.jcas = concat.concat("\n\n", file.collect(is -> {
 			try {
-				System.err.println("Processing file ... ");
+				// System.err.println("Processing file ... ");
 				return process(is);
 			} catch (UIMAException | IOException e) {
 				e.printStackTrace();
@@ -207,7 +207,7 @@ public class CatmaTei2CSV {
 
 	public MutableList<CatmaAnnotation> getFilteredCatmaAnnotations() {
 
-		System.err.println(featureStructureTypes);
+		// System.err.println(featureStructureTypes);
 		return Lists.mutable.ofAll(JCasUtil.select(jcas, CatmaAnnotation.class)).select(ca -> ca.getTokenBegin() != -1)
 				.select(ca -> ca.getTokenEnd() != Integer.MAX_VALUE)
 				.select(ca -> featureStructureTypes.contains(ca.getCatmaType()));
