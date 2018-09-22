@@ -142,7 +142,7 @@ public class CatmaTei2CSV {
 			ca.setId(id);
 			if (propertiesMap.containsKey(id))
 				ca.setProperties(propertiesMap.get(id));
-
+			ca.setCatmaType(fsDeclMap.get(fsMap.get(id)));
 			ca.addToIndexes();
 
 			// find begin
