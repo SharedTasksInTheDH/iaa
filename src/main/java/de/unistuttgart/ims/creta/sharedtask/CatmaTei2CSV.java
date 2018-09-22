@@ -123,9 +123,9 @@ public class CatmaTei2CSV {
 		writeLaTeX();
 	}
 
-	public void process0() throws UIMAException, FileNotFoundException, IOException {
-		jcas = JCasFactory.createJCas();
-		reader.read(jcas, file);
+	private JCas process(InputStream is) throws UIMAException, IOException {
+		JCas jcas = JCasFactory.createJCas();
+		reader.read(jcas, is);
 
 		SimplePipeline.runPipeline(jcas, AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
@@ -184,7 +184,11 @@ public class CatmaTei2CSV {
 			}
 			ca.setTokenEnd(end);
 		}
+		return jcas;
+	}
 
+	public void process0() throws UIMAException, FileNotFoundException, IOException {
+		jcas = process(file);
 	}
 
 	public MutableList<CatmaAnnotation> getFilteredCatmaAnnotations() {
