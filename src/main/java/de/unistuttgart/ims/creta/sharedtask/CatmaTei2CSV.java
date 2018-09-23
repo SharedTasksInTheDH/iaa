@@ -48,8 +48,6 @@ public class CatmaTei2CSV {
 	File markdownFile = null;
 	File latexFile = null;
 
-	GenericXmlReader<DocumentMetaData> reader;
-
 	String annotatorId;
 
 	List<String> featureStructureTypes;
@@ -94,7 +92,9 @@ public class CatmaTei2CSV {
 				return Integer.compare(o1.getBegin(), o2.getBegin());
 			}
 		});
-		this.reader = new GenericXmlReader<DocumentMetaData>(DocumentMetaData.class);
+		GenericXmlReader<DocumentMetaData> reader;
+
+		reader = new GenericXmlReader<DocumentMetaData>(DocumentMetaData.class);
 		reader.setPreserveWhitespace(false);
 		reader.setTextRootSelector("TEI > text > body");
 		reader.addGlobalRule("fsDecl", (a, e) -> {
@@ -134,6 +134,7 @@ public class CatmaTei2CSV {
 			}
 		});
 
+		@SuppressWarnings("hiding")
 		JCas jcas = JCasFactory.createJCas();
 		reader.read(jcas, is);
 
@@ -141,15 +142,17 @@ public class CatmaTei2CSV {
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
 
 		for (String id : annoMap.keySet()) {
-			CatmaAnnotation ca = new CatmaAnnotation(jcas);
-			ca.setBegin(annoMap.get(id).toList().getFirst().getBegin());
-			ca.setEnd(annoMap.get(id).toList().getLast().getEnd());
-			ca.setId(id);
-			if (propertiesMap.containsKey(id))
-				ca.setProperties(propertiesMap.get(id));
 			String typeId = fsId2typeId.get(id);
-			ca.setCatmaType(typeId2description.get(typeId));
-			ca.addToIndexes();
+			if (typeId2description.containsKey(id)) {
+				CatmaAnnotation ca = new CatmaAnnotation(jcas);
+				ca.setBegin(annoMap.get(id).toList().getFirst().getBegin());
+				ca.setEnd(annoMap.get(id).toList().getLast().getEnd());
+				ca.setId(id);
+				if (propertiesMap.containsKey(id))
+					ca.setProperties(propertiesMap.get(id));
+				ca.setCatmaType(typeId2description.get(typeId));
+				ca.addToIndexes();
+			}
 
 		}
 		return jcas;
