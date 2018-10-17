@@ -1,6 +1,7 @@
 package de.unistuttgart.ims.creta.sharedtask;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -39,9 +40,7 @@ public class AnnotationMerger extends JCasAnnotator_ImplBase {
 					ca = null;
 				}
 			}
-		} catch (
-
-		IndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException | NoSuchElementException e) {
 
 		}
 	}

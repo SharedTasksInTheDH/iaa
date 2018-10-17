@@ -142,8 +142,10 @@ public class CatmaTei2CSV {
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
 
 		for (String id : annoMap.keySet()) {
+			// System.err.println(id);
 			String typeId = fsId2typeId.get(id);
-			if (typeId2description.containsKey(id)) {
+			if (typeId2description.containsKey(typeId)) {
+				// System.err.println(typeId2description.containsKey(id));
 				CatmaAnnotation ca = new CatmaAnnotation(jcas);
 				ca.setBegin(annoMap.get(id).toList().getFirst().getBegin());
 				ca.setEnd(annoMap.get(id).toList().getLast().getEnd());
@@ -155,6 +157,9 @@ public class CatmaTei2CSV {
 			}
 
 		}
+
+		SimplePipeline.runPipeline(jcas, AnalysisEngineFactory.createEngineDescription(AnnotationMerger.class));
+
 		return jcas;
 	}
 
