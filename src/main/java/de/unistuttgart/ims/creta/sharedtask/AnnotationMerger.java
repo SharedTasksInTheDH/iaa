@@ -1,7 +1,6 @@
 package de.unistuttgart.ims.creta.sharedtask;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -20,29 +19,28 @@ public class AnnotationMerger extends JCasAnnotator_ImplBase {
 		beginAnno.setBegin(0);
 		beginAnno.setEnd(0);
 		beginAnno.addToIndexes();
-		try {
-			CatmaAnnotation ca = JCasUtil.select(jcas, CatmaAnnotation.class).iterator().next();
-			CatmaAnnotation next;
-			while (ca != null) {
-				List<CatmaAnnotation> followers = JCasUtil.selectFollowing(CatmaAnnotation.class, ca, 1);
-				if (!followers.isEmpty()) {
-					next = followers.get(0);
-					List<Token> tokens = JCasUtil.selectBetween(Token.class, ca, next);
-					if (tokens.isEmpty() && ca.getProperties().equals(next.getProperties())
-							&& ca.getCatmaType().equals(next.getCatmaType())) {
-						ca.setEnd(next.getEnd());
-						next.removeFromIndexes();
-					} else {
-						ca = next;
-					}
 
+		for (CatmaAnnotation ca : JCasUtil.select(jcas, CatmaAnnotation.class)) {
+			CatmaAnnotation next;
+			List<CatmaAnnotation> followers = JCasUtil.selectFollowing(CatmaAnnotation.class, ca, 1);
+			if (!followers.isEmpty()) {
+				next = followers.get(0);
+				List<Token> tokens = JCasUtil.selectBetween(Token.class, ca, next);
+				if (tokens.isEmpty() && ca.getProperties().equals(next.getProperties())
+						&& ca.getCatmaType().equals(next.getCatmaType())) {
+					ca.setEnd(next.getEnd());
+					next.removeFromIndexes();
 				} else {
-					ca = null;
+					ca = next;
 				}
+
+			} else {
+				ca = null;
 			}
-		} catch (IndexOutOfBoundsException | NoSuchElementException e) {
 
 		}
+
+		return;
 	}
 
 }
