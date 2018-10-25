@@ -47,6 +47,7 @@ public class CatmaTei2CSV {
 	Appendable appendable;
 	File markdownFile = null;
 	File latexFile = null;
+	File xmiFile = null;
 
 	String annotatorId;
 
@@ -72,11 +73,12 @@ public class CatmaTei2CSV {
 	}
 
 	private void writeXmi() throws FileNotFoundException, IOException {
-		try {
-			XmlCasSerializer.serialize(jcas.getCas(), new FileOutputStream("target/Test.xmi"));
-		} catch (SAXException e) { // TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if (getXmiFile() != null)
+			try {
+				XmlCasSerializer.serialize(jcas.getCas(), new FileOutputStream(getXmiFile()));
+			} catch (SAXException e) { // TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	private JCas process(InputStream is) throws UIMAException, IOException {
@@ -399,5 +401,13 @@ public class CatmaTei2CSV {
 
 	public boolean addAllIterable(Iterable<? extends InputStream> iterable) {
 		return file.addAllIterable(iterable);
+	}
+
+	public File getXmiFile() {
+		return xmiFile;
+	}
+
+	public void setXmiFile(File xmiFile) {
+		this.xmiFile = xmiFile;
 	}
 }

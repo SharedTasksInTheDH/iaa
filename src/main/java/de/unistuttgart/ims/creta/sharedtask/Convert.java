@@ -26,6 +26,7 @@ public class Convert {
 			c.setAppendable(new FileWriter(getCSVFile(result)));
 			c.setMarkdownFile(getMDFile(result));
 			c.setLatexFile(getTEXFile(result));
+			c.setXmiFile(getXmiFile(result));
 		}
 		c.setFeatureStructureTypes(result.getCategories());
 		c.setFeatureTypes(result.getFeatures());
@@ -45,6 +46,10 @@ public class Convert {
 
 	public static File getTEXFile(Options options) {
 		return new File(options.getOutput().getAbsolutePath() + ".tex");
+	}
+
+	public static File getXmiFile(Options options) {
+		return new File(options.getOutput().getAbsolutePath() + ".xmi");
 	}
 
 	interface Options {
